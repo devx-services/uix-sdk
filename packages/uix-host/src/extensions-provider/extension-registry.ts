@@ -73,7 +73,6 @@ export interface ExtensionRegistryConfig
   extends ExtensionRegistryExtensionRegistration,
     ExtensionRegistryConnection {
   aemInstance?: string;
-  extBaseUrl?: string;
 }
 
 function buildEndpointPath(
@@ -101,7 +100,7 @@ function buildExtensionRegistryUrl(config: ExtensionRegistryConfig): string {
       auth: "true",
     });
     return (
-      ensureProtocolSpecified(config.extBaseUrl) +
+      ensureProtocolSpecified(config.baseUrl) +
       "/api/v1/web/dx-excshell-1/listFilteredExtensions" +
       `?${queryParams.toString()}`
     );
